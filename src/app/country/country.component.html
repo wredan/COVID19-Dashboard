@@ -9,22 +9,24 @@
     <br>
     <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
         <form fxFlex="100">
-            <mat-form-field>
+            <mat-form-field appearance="outline" fxFlex="100">
+                <mat-label>Ricerca il Paese da analizzare</mat-label>
+                <mat-icon matSuffix>search</mat-icon>
                 <input type="text" matInput [matAutocomplete]="auto" [formControl]="autocompleteForm">
-                <mat-autocomplete #auto="matAutocomplete"  [displayWith]="displayFn">
+                <mat-autocomplete #auto="matAutocomplete"  [displayWith]="displayFn" (optionSelected)='getCountryData($event.option.value);'>
                     <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
                         {{option.name}}
 
                     </mat-option>
                 </mat-autocomplete>
+                <mat-hint>*Nomi dei Paesi in Inglese</mat-hint>
             </mat-form-field>
         </form>
     </div>
     <br>
     <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
-        <p fxFlex="100">Mappa</p>
+        <h2 fxFlex="100">{{country}}</h2>
     </div>
-    <br>
     <mat-divider></mat-divider>
     <br>
     <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">

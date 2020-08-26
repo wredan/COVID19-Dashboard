@@ -16,10 +16,10 @@ interface AutocompleteValue {
 })
 export class CountryComponent implements OnInit {
 
-  options: AutocompleteValue[] = [];
-
-  autocompleteForm = new FormControl();
-  filteredOptions: Observable<AutocompleteValue[]>
+  public options: AutocompleteValue[] = [];
+  public country: string;
+  public autocompleteForm = new FormControl();
+  public filteredOptions: Observable<AutocompleteValue[]>
 
   public data;
   public showSpinner: boolean = true;
@@ -27,7 +27,8 @@ export class CountryComponent implements OnInit {
   constructor(private dataManger: DataManagerService) { }
 
   ngOnInit(): void {
-    this._getCountryData("ITA");
+    let country: AutocompleteValue = { name: "World", code: "OWID_WRL" };
+    this.getCountryData(country);
     this._getCountryCodesList();
 
     this.filteredOptions = this.autocompleteForm.valueChanges.pipe(
@@ -36,9 +37,8 @@ export class CountryComponent implements OnInit {
     );
   }
 
-  private _filter(value: string): AutocompleteValue[] {  
-    console.log(typeof value);
-    const filterValue = typeof value == "string" ? value.toLowerCase() : '';   
+  private _filter(value: string): AutocompleteValue[] {
+    const filterValue = typeof value == "string" ? value.toLowerCase() : '';
     return this.options.filter(option => option.name.toLowerCase().includes(filterValue));
   }
 
@@ -46,11 +46,12 @@ export class CountryComponent implements OnInit {
     return subject ? subject.name : undefined;
   }
 
-  private _getCountryData(countryCode: string) {
-    this.dataManger.getCovidCountryData(countryCode).subscribe(
+  getCountryData(country: AutocompleteValue) {
+    this.showSpinner = true;
+    this.dataManger.getCovidCountryData(country.code).subscribe(
       res => {
-        console.log(res.data);
         this.data = res.data;
+        this.country = (country.name == "World") ? "Situazione Mondiale" : country.name;
         this.showSpinner = false;
       },
       err => {
@@ -63,7 +64,6 @@ export class CountryComponent implements OnInit {
     this.dataManger.getCountryCodesList().subscribe(
       res => {
         this.options = res.data;
-        console.log(this.options);
       },
       err => {
         console.log(err);

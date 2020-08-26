@@ -1,0 +1,54 @@
+<div *ngIf="showSpinner == true">
+    <div fxLayout="column" fxLayoutAlign="center center" class="loading-page-spinner">
+        <mat-progress-spinner 
+            diameter="70"
+            mode="indeterminate" ></mat-progress-spinner>
+    </div>    
+</div>
+<div *ngIf="showSpinner == false" class="custom-container">
+    <br>
+    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
+        <form fxFlex="100">
+            <mat-form-field>
+                <input type="text" matInput [matAutocomplete]="auto" [formControl]="autocompleteForm">
+                <mat-autocomplete #auto="matAutocomplete"  [displayWith]="displayFn">
+                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                        {{option.name}}
+
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+        </form>
+    </div>
+    <br>
+    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
+        <p fxFlex="100">Mappa</p>
+    </div>
+    <br>
+    <mat-divider></mat-divider>
+    <br>
+    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
+        <app-card [type]="'cases_total'" [header]="'Casi Totali'" [data]="data" [subtitle]="'Casi confermati'"
+            fxFlex="50"></app-card>
+        <app-card [type]="'cases_daily'" [header]="'Casi Giornalieri'" [data]="data"
+            [subtitle]="'Casi confermati'" fxFlex="50"></app-card>
+    </div>
+    <br>
+    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
+        <app-ow-timeline [type]="'cases'" [data]="data" [color]="'#1976D2'" fxFlex="100"></app-ow-timeline>
+    </div>
+    <br>
+    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
+        <app-card [type]="'deaths_total'" [header]="'Morti Totali'" [data]="data"
+            [subtitle]="'Morti Confermate'" fxFlex="50"></app-card>
+        <app-card [type]="'deaths_daily'" [header]="'Morti Giornaliere'" [data]="data"
+            [subtitle]="'Morti Confermate'" fxFlex="50"></app-card>
+    </div>
+    <br>
+    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
+        <app-ow-timeline [type]="'death'" [data]="data" [color]="'#D32F2F'" fxFlex="100"></app-ow-timeline>
+    </div>
+    <br>
+    <mat-divider></mat-divider>
+    <br>    
+</div>

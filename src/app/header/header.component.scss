@@ -1,0 +1,25 @@
+@import "../shared/theme.scss";
+
+@mixin zero-margin($pad-up-down, $pad-left-right) {
+    margin: 0px auto;
+    padding: $pad-up-down $pad-left-right;
+}
+
+.jumbotron {
+    background: $background-primary;
+    color:floralwhite;
+    min-height: 100px;
+}
+
+.active {
+    background: $background-accent;
+}
+
+.header-page-selector {
+    background: $background-dark-primary;
+    padding: 5px;
+}
+
+.header-page-selector a {
+    color: white;    
+}

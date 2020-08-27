@@ -29,6 +29,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
 
 import { ChartsModule } from 'ng2-charts';
 import { CardComponent } from './widgets/card/card.component';
@@ -37,6 +38,9 @@ import { CtryTimelineComponent } from './widgets/ctry-timeline/ctry-timeline.com
 import { RegrlinChartComponent } from './widgets/stats-charts/regrlin-chart/regrlin-chart.component';
 import { CoeffPearsonChartComponent } from './widgets/stats-charts/coeff-pearson-chart/coeff-pearson-chart.component';
 import { CorrelationChartComponent } from './widgets/stats-charts/correlation-chart/correlation-chart.component';
+import { MediaChartComponent } from './widgets/stats-charts/media-chart/media-chart.component';
+import { PositiveTestChartComponent } from './widgets/stats-charts/positive-test-chart/positive-test-chart.component';
+import { RegrlinCardComponent } from './widgets/regrlin-card/regrlin-card.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +54,10 @@ import { CorrelationChartComponent } from './widgets/stats-charts/correlation-ch
     CtryTimelineComponent,
     RegrlinChartComponent,
     CoeffPearsonChartComponent,
-    CorrelationChartComponent
+    CorrelationChartComponent,
+    MediaChartComponent,
+    PositiveTestChartComponent,
+    RegrlinCardComponent
   ],
   imports: [
     BrowserModule,
@@ -73,7 +80,8 @@ import { CorrelationChartComponent } from './widgets/stats-charts/correlation-ch
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
-    MatIconModule
+    MatIconModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

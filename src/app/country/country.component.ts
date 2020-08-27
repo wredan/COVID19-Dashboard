@@ -17,7 +17,7 @@ interface AutocompleteValue {
 export class CountryComponent implements OnInit {
 
   public options: AutocompleteValue[] = [];
-  public country: string;
+  public country: string = "OWID_WRL";
   public autocompleteForm = new FormControl();
   public filteredOptions: Observable<AutocompleteValue[]>
 

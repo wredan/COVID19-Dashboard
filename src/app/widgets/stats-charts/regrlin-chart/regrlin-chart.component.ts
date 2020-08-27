@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges} from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { StatsService } from '../../../services/stats.service';
 
 @Component({
@@ -33,7 +33,16 @@ export class RegrlinChartComponent implements OnInit, OnChanges {
   public regrlinChartLegend = true;
   public regrlinChartData = [];
 
-  constructor(private statsManager: StatsService) { }
+  // public coefficienti = "";
+  // public covarianza = "";
+  public pearson = "";
+  public stimaGiorno = [];
+  public dimensioneCampionePredizione = 15;
+  public giorni = [3, 7, 15, 30, 60];
+  public timestampsDataset;
+
+
+  constructor(private statsManager: StatsService) {  }
 
   ngOnInit() {
 
@@ -44,10 +53,10 @@ export class RegrlinChartComponent implements OnInit, OnChanges {
       this.regrlinChartLabels.push(el.date);
     });
     this.setLinearRegressionData(this.data.data);
-    this.setCases(this.data.data);  
+    this.setCases(this.data.data);
   }
 
-    setCases(data) {
+  setCases(data) {
     let dataset = [];
     data.forEach(el => {
       dataset.push(el.new_cases);
@@ -73,11 +82,19 @@ export class RegrlinChartComponent implements OnInit, OnChanges {
       dataset.push(el.new_cases);
     });
 
+    // this.coefficienti = `m = ${coefM}\n q = ${coefQ}`;
+    // this.covarianza = "" + covarianza;
+    // this.pearson = ""+pearson;
+
     let drawPoints = this.statsManager.getRegrLinDrawPoints(
       dataTimestamp,
       this.statsManager.coeffM(dataTimestamp, dataset),
       this.statsManager.coeffQ(dataTimestamp, dataset),
     );
+
+    this.timestampsDataset = dataTimestamp;
+    this.dataset = dataset;
+    this.setPrevision();
 
     this.regrlinChartData.push({
       data: [
@@ -92,7 +109,28 @@ export class RegrlinChartComponent implements OnInit, OnChanges {
       pointRadius: 0,
       order: 1
     });
+  }
 
+  setPrevision(){
+    let dataTimestamp = (this.dimensioneCampionePredizione > 0) ? this.timestampsDataset.slice(-this.dimensioneCampionePredizione) : this.timestampsDataset;
+    let dataset = (this.dimensioneCampionePredizione > 0) ? this.dataset.slice(-this.dimensioneCampionePredizione) : this.dataset;
+
+    let coefM = this.statsManager.coeffM(dataTimestamp, dataset);
+    let coefQ = this.statsManager.coeffQ(dataTimestamp, dataset);
+    this.stimaGiorno = [
+      { 
+        date: new Date(this.data["nextDays"][0] * 1000).toLocaleDateString("it"), 
+        value: Math.round(this.statsManager.regrLinStimaY(this.data["nextDays"][0], coefM, coefQ)).toLocaleString("en")
+      },
+      {
+        date: new Date(this.data["nextDays"][1] * 1000).toLocaleDateString("it"), 
+        value: Math.round(this.statsManager.regrLinStimaY(this.data["nextDays"][1], coefM, coefQ)).toLocaleString("en")
+      },
+      {
+        date: new Date(this.data["nextDays"][2] * 1000).toLocaleDateString("it"), 
+        value: Math.round(this.statsManager.regrLinStimaY(this.data["nextDays"][2], coefM, coefQ)).toLocaleString("en")
+      }
+    ]   
   }
 
 }

@@ -31,14 +31,14 @@ export class CardComponent implements OnInit, OnChanges {
         break;
       case "cases_daily":
         this.title = lastDay.new_cases.toLocaleString("en");
-        this.header += " - " + lastDay.date;
+        this.header += " - " + new Date(lastDay.timestamp * 1000).toLocaleDateString("it");
         break;
       case "deaths_total":
         this.title = lastDay.total_deaths.toLocaleString("en");
         break;
       case "deaths_daily":
         this.title = lastDay.new_deaths.toLocaleString("en");
-        this.header += " - " + lastDay.date;
+        this.header += " - " + new Date(lastDay.timestamp * 1000).toLocaleDateString("it");
         break;
 
       default:

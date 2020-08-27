@@ -1,15 +1,55 @@
-<div>
-    <h3>Regressione lineare</h3>
-    <p> La retta mostra il legame funzionale che descrive una possible relazione tra i dati</p>
-    <div>
-      <canvas baseChart
-              [height]="heigth"
-              [datasets]="regrlinChartData"
-              [labels]="regrlinChartLabels"
-              [options]="regrlinChartOptions"
-              [legend]="regrlinChartLegend"
-              [chartType]="regrlinChartType"
-              >
-      </canvas>
-    </div>
-  </div>
+<div fxLayout="row" fxLayoutAlign="space-around start"  fxLayoutGap="20px" class="stats-cards">
+    <div fxFlex="60">
+        <h3>Regressione lineare</h3>
+        <p> La retta mostra il legame funzionale che descrive una possible relazione tra i dati</p>
+        <div>
+          <canvas baseChart
+                  [height]="heigth"
+                  [datasets]="regrlinChartData"
+                  [labels]="regrlinChartLabels"
+                  [options]="regrlinChartOptions"
+                  [legend]="regrlinChartLegend"
+                  [chartType]="regrlinChartType"
+                  >
+          </canvas>
+        </div>
+    </div>     
+    <div fxFlex="40">
+        <h3>Stima prossimi 3 giorni</h3>
+        <p> Di seguito la stima del numero di casi nei successivi 3 giorni, utilizzando gli ultimi 
+            <mat-form-field appearance="standard" style="width: 50px;">
+                <mat-select [(ngModel)]="dimensioneCampionePredizione" (ngModelChange)="setPrevision()">
+                  <mat-option *ngFor="let giorno of giorni" [value]="giorno">
+                    {{giorno}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field> giorni
+        </p>
+        <!-- <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">        
+            <div fxFlex="50">
+                <app-regrlin-card [header]="'Covarianza'" [title]="covarianza" ></app-regrlin-card>
+            </div>
+            <div fxFlex="50">
+                <app-regrlin-card [header]="'Pearson'" [title]="pearson" ></app-regrlin-card>
+            </div>
+        </div> -->
+        <br>
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="stats-cards">          
+            <div fxFlex="100">
+                <app-regrlin-card [data]="stimaGiorno[0]" ></app-regrlin-card>
+            </div>           
+        </div>
+        <br>
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="stats-cards">          
+            <div fxFlex="100">
+                <app-regrlin-card [data]="stimaGiorno[1]" ></app-regrlin-card>
+            </div>           
+        </div>
+        <br>
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="stats-cards">          
+            <div fxFlex="100">
+                <app-regrlin-card [data]="stimaGiorno[2]" ></app-regrlin-card>
+            </div>           
+        </div>
+    </div>          
+</div> 

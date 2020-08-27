@@ -55,7 +55,7 @@ export class StatsService {
     return mediaY - (mediaX * covarianza / varianzaX);
   }
 
-  regrLinY(x: number, coeffM: number, coeffQ: number): number{
+  regrLinStimaY(x: number, coeffM: number, coeffQ: number): number{
     return coeffM * x + coeffQ;
   }
 
@@ -63,8 +63,8 @@ export class StatsService {
     let min = Math.min(...x);
     let max = Math.max(...x);
     var drawPoints = [
-      { x: min, y: this.regrLinY(min, coeffM, coeffQ)},
-      { x: max, y: this.regrLinY(max, coeffM, coeffQ)}
+      { x: min, y: this.regrLinStimaY(min, coeffM, coeffQ)},
+      { x: max, y: this.regrLinStimaY(max, coeffM, coeffQ)}
     ];
     return drawPoints;
   }

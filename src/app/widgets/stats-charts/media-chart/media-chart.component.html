@@ -1,0 +1,22 @@
+
+<div>
+    <h3>Media casi su 
+        <mat-form-field appearance="standard" style="width: 50px;">
+        <mat-select [(ngModel)]="days" (ngModelChange)="getMedia()">
+          <mat-option *ngFor="let giorno of giorni" [value]="giorno">
+            {{giorno}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field> giorni</h3>         
+    <div>
+      <canvas baseChart
+              [height]="heigth"
+              [datasets]="mediaChartData"
+              [labels]="mediaChartLabels"
+              [options]="mediaChartOptions"
+              [legend]="mediaChartLegend"
+              [chartType]="mediaChartType"
+              >
+      </canvas>
+    </div>
+  </div>

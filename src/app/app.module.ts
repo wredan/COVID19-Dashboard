@@ -34,7 +34,9 @@ import { ChartsModule } from 'ng2-charts';
 import { CardComponent } from './widgets/card/card.component';
 import { OwTimelineComponent } from './widgets/ow-timeline/ow-timeline.component';
 import { CtryTimelineComponent } from './widgets/ctry-timeline/ctry-timeline.component';
-import { CorrelazioneChartComponent } from './widgets/correlazione-chart/correlazione-chart.component';
+import { RegrlinChartComponent } from './widgets/stats-charts/regrlin-chart/regrlin-chart.component';
+import { CoeffPearsonChartComponent } from './widgets/stats-charts/coeff-pearson-chart/coeff-pearson-chart.component';
+import { CorrelationChartComponent } from './widgets/stats-charts/correlation-chart/correlation-chart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +48,9 @@ import { CorrelazioneChartComponent } from './widgets/correlazione-chart/correla
     CardComponent,
     OwTimelineComponent,
     CtryTimelineComponent,
-    CorrelazioneChartComponent
+    RegrlinChartComponent,
+    CoeffPearsonChartComponent,
+    CorrelationChartComponent
   ],
   imports: [
     BrowserModule,

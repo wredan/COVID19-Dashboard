@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CorrelazioneChartComponent } from './correlazione-chart.component';
+import { RegrlinChartComponent } from './regrlin-chart.component';
 
-describe('CorrelazioneChartComponent', () => {
-  let component: CorrelazioneChartComponent;
-  let fixture: ComponentFixture<CorrelazioneChartComponent>;
+describe('RegrlinChartComponent', () => {
+  let component: RegrlinChartComponent;
+  let fixture: ComponentFixture<RegrlinChartComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CorrelazioneChartComponent ]
+      declarations: [ RegrlinChartComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CorrelazioneChartComponent);
+    fixture = TestBed.createComponent(RegrlinChartComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -54,28 +54,38 @@
     <br>
     <br>   
     <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
-        <h2 fxFlex="100">Analisi Statistica</h2>
+        <div fxFlex="100">
+            <h2>Analisi Statistica</h2>
+            <mat-hint>* Alcuni dati potrebbero risultare mancanti a causa del mancato aggiornamento del dataset utilizzato</mat-hint>
+        </div>
     </div> 
+    <br>
     <mat-divider></mat-divider>
-    <br>   
     <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
         <div fxFlex="50">
-            <h3>Regressione lineare e Correlazione</h3>           
+            <app-regrlin-chart [data]="data" [heigth]="120"></app-regrlin-chart>                      
         </div>  
         <div fxFlex="50">
-            <h3>Coefficiente di Pearson Casi Giornalieri</h3>           
+           <!-- mettere previsioni -->
+           
         </div>      
     </div> 
     <br>
     <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
         <div fxFlex="50">
-            <p> La retta mostra il legame funzionale che descrive una possible relazione tra i dati</p>
-            <app-ctry-timeline [type]="'regressione_lineare_cases'" [data]="data" [heigth]="120" [color]="'#1976D2'"></app-ctry-timeline>
+            <app-correlation-chart [type]="'correlation_cases_tests'" [title]="'Casi-Test'" [data]="data" [heigth]="120"></app-correlation-chart>
         </div>
-        <div fxFlex="50">
-            <p> Mostra il grado di approssimazione dei dati</p>
-            <app-ctry-timeline [type]="'pearson_cases'" [data]="data" [heigth]="120" [color]="'#1976D2'"></app-ctry-timeline>
+        <div fxFlex="50">          
+            <app-coeff-pearson-chart [type]="'pearson_cases_tests'" [title]="'Casi-Test'" [data]="data" [heigth]="120"></app-coeff-pearson-chart> 
         </div>        
     </div>
     <br>
+    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
+        <div fxFlex="50">
+            <app-correlation-chart [type]="'correlation_cases_deaths'" [title]="'Casi-Morti'" [data]="data" [heigth]="120"></app-correlation-chart>
+        </div>
+        <div fxFlex="50">          
+            <app-coeff-pearson-chart [type]="'pearson_cases_deaths'" [title]="'Casi-Morti'" [data]="data" [heigth]="120"></app-coeff-pearson-chart>  
+        </div>        
+    </div>
 </div>

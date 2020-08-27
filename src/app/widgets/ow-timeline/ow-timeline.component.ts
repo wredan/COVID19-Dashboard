@@ -61,17 +61,10 @@ export class OwTimelineComponent implements OnInit, OnChanges {
       dataArray.forEach(el => {
         this.timelineChartLabels.push(el.date);
         this.dataset.push(el.new_cases);
-        tests.push(el.new_tests);
       });
       label = 'Distribuzione Giornaliera Casi';
       console.log(tests)
-      this.timelineChartData.push( {
-        data: tests, 
-        label: "Distribuzione giornaliera tamponi", 
-        fill: false,
-        pointRadius: 0
-      });
-       
+            
     } else {
       dataArray.forEach(el => {
         this.timelineChartLabels.push(el.date);

@@ -1,0 +1,16 @@
+
+<div>
+    <h3>Correlazione {{ title }}</h3>         
+    <p> Mostra la distribuzione delle due serie di dati</p>
+    <div>
+      <canvas baseChart
+              [height]="heigth"
+              [datasets]="correlationChartData"
+              [labels]="correlationChartLabels"
+              [options]="correlationChartOptions"
+              [legend]="correlationChartLegend"
+              [chartType]="correlationChartType"
+              >
+      </canvas>
+    </div>
+  </div>

@@ -1,0 +1,16 @@
+
+<div>
+    <h3>Coefficiente di Correlazione lineare (Pearson) {{ title }}</h3>         
+    <p> Mostra il grado di approssimazione dei dati</p>
+    <div>
+      <canvas baseChart
+              [height]="heigth"
+              [datasets]="pearsonChartData"
+              [labels]="pearsonChartLabels"
+              [options]="pearsonChartOptions"
+              [legend]="pearsonChartLegend"
+              [chartType]="pearsonChartType"
+              >
+      </canvas>
+    </div>
+  </div>

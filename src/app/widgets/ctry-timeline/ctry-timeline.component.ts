@@ -49,50 +49,13 @@ export class CtryTimelineComponent implements OnInit, OnChanges {
         break;
       case "tests":
         this.setTests(this.data.data);
-        break;
-      case "casesAndTests":
-        this.setCasesAndTests(this.data.data);
-        break;
+        break;     
       case "death":
         this.setDeath(this.data.data);
-        break;
-      case "regressione_lineare_cases":
-        this.setLinearRegressionData(this.data.data);
-        this.setCases(this.data.data);
-        break;
-      case "pearson_cases":
-        this.setPearsonCases(this.data.data);
-        break;
-      case "pearson_cases_tests":
-        this.setPearsonTestsAndCases(this.data.data);
-        break;
-
+        break;    
       default:
         break;
     }
-  }
-
-  setCasesAndTests(data) {
-    let tests = [];
-    let dataset = [];
-    data.forEach(el => {
-      dataset.push(el.new_cases);
-      tests.push(el.new_tests);
-    });
-
-    this.timelineChartData.push({
-      data: dataset,
-      label: 'Distribuzione Giornaliera Casi',
-      fill: false,
-      pointRadius: 1
-    });
-
-    this.timelineChartData.push({
-      data: tests,
-      label: "Distribuzione giornaliera tamponi",
-      fill: false,
-      pointRadius: 1
-    });
   }
 
   setDeath(data) {
@@ -150,84 +113,6 @@ export class CtryTimelineComponent implements OnInit, OnChanges {
   }
 
 
-  setLinearRegressionData(data) {
-    let dataTimestamp = [];
-    let dataset = [];
-    data.forEach(el => {
-      dataTimestamp.push(el.timestamp);
-      dataset.push(el.new_cases);
-    });
-
-    let drawPoints = this.statsManager.getRegrLinDrawPoints(
-      dataTimestamp,
-      this.statsManager.coeffM(dataTimestamp, dataset),
-      this.statsManager.coeffQ(dataTimestamp, dataset),
-    );
-
-    this.timelineChartData.push({
-      data: [
-        { x: new Date(drawPoints[0].x * 1000), y: drawPoints[0].y },
-        { x: new Date(drawPoints[1].x * 1000), y: drawPoints[1].y },
-      ],
-      label: "Retta di Regressione y=mx+q",
-      fill: false,
-      showLine: true,
-      borderDash: [10, 10],
-      borderColor: "#FFC107",
-      pointRadius: 0,
-      order: 1
-    });
-
-  }
-
-  setPearsonCases(data) {
-    let dataTimestamp = [];
-    let dailyCases = [];
-    let pearson = [];
-    data.forEach(el => {
-      dataTimestamp.push(el.timestamp);
-      dailyCases.push(el.new_cases);
-      pearson.push(this.statsManager.coeffPearson(dailyCases, dataTimestamp));
-    });
-
-    this.timelineChartType = 'bar';
-
-    this.timelineChartData.push({
-      data: pearson,
-      label: "Coefficiente di Pearson",
-      fill: false,
-      showLine: true,
-      borderDash: [10, 10],
-      backgroundColor: "#303F9F",
-
-      pointRadius: 0,
-      order: 1
-    });
-  }
-
-  setPearsonTestsAndCases(data) {
-    let dailyCases = [];
-    let dailyTests = [];
-    let pearson = [];
-    data.forEach(el => {
-      dailyCases.push(el.new_cases);
-      dailyTests.push(el.new_tests ? el.new_tests : 0);
-      pearson.push(this.statsManager.coeffPearson(dailyCases, dailyTests));
-    });
-
-    this.timelineChartType = 'bar';
-
-    this.timelineChartData.push({
-      data: pearson,
-      label: "Coefficiente di Pearson",
-      fill: false,
-      showLine: true,
-      borderDash: [10, 10],
-      backgroundColor: "#303F9F",
-
-      pointRadius: 0,
-      order: 1
-    });
-  }
+ 
 
 }

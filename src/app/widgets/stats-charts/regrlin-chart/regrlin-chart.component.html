@@ -16,8 +16,8 @@
     </div>     
     <div fxFlex="40">
         <h3>Stima prossimi 3 giorni</h3>
-        <p> Di seguito la stima del numero di casi nei successivi 3 giorni, utilizzando gli ultimi 
-            <mat-form-field appearance="standard" style="width: 50px;">
+        <p> Di seguito la stima del numero di casi nei successivi 3 giorni, considerando i dati degli ultimi 
+            <mat-form-field appearance="standard" style="width: 50px; margin-top: -20px;">
                 <mat-select [(ngModel)]="dimensioneCampionePredizione" (ngModelChange)="setPrevision()">
                   <mat-option *ngFor="let giorno of giorni" [value]="giorno">
                     {{giorno}}
@@ -33,7 +33,6 @@
                 <app-regrlin-card [header]="'Pearson'" [title]="pearson" ></app-regrlin-card>
             </div>
         </div> -->
-        <br>
         <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="stats-cards">          
             <div fxFlex="100">
                 <app-regrlin-card [data]="stimaGiorno[0]" ></app-regrlin-card>

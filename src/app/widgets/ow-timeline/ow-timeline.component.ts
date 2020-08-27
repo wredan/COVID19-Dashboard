@@ -63,7 +63,6 @@ export class OwTimelineComponent implements OnInit, OnChanges {
         this.dataset.push(el.new_cases);
       });
       label = 'Distribuzione Giornaliera Casi';
-      console.log(tests)
             
     } else {
       dataArray.forEach(el => {

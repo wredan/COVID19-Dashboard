@@ -9,7 +9,7 @@ import { catchError, retry } from 'rxjs/operators';
 })
 export class DataManagerService {
 
-  dataApiUrl = 'http://metodicovid19data.altervista.org/api/';
+  dataApiUrl = 'https://metodicovid19data.altervista.org/api/';
 
   constructor(private http: HttpClient) {   
   }

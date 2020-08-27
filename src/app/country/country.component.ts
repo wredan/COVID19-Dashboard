@@ -50,7 +50,7 @@ export class CountryComponent implements OnInit {
     this.showSpinner = true;
     this.dataManger.getCovidCountryData(country.code).subscribe(
       res => {
-        this.data = res.data;
+        this.data = res["data"];
         this.country = (country.name == "World") ? "Situazione Mondiale" : country.name;
         this.showSpinner = false;
       },
@@ -63,7 +63,7 @@ export class CountryComponent implements OnInit {
   private _getCountryCodesList() {
     this.dataManger.getCountryCodesList().subscribe(
       res => {
-        this.options = res.data;
+        this.options = res["data"];
       },
       err => {
         console.log(err);

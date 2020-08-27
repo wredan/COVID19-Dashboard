@@ -33,6 +33,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { ChartsModule } from 'ng2-charts';
 import { CardComponent } from './widgets/card/card.component';
 import { OwTimelineComponent } from './widgets/ow-timeline/ow-timeline.component';
+import { CtryTimelineComponent } from './widgets/ctry-timeline/ctry-timeline.component';
+import { CorrelazioneChartComponent } from './widgets/correlazione-chart/correlazione-chart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +44,9 @@ import { OwTimelineComponent } from './widgets/ow-timeline/ow-timeline.component
     CountryComponent,
     SummaryTableComponent,
     CardComponent,
-    OwTimelineComponent
+    OwTimelineComponent,
+    CtryTimelineComponent,
+    CorrelazioneChartComponent
   ],
   imports: [
     BrowserModule,

@@ -57,11 +57,21 @@ export class OwTimelineComponent implements OnInit, OnChanges {
     let dataArray = this.data.data;   
     let label;
     if(this.type == "cases"){
+      let tests = [];
       dataArray.forEach(el => {
         this.timelineChartLabels.push(el.date);
         this.dataset.push(el.new_cases);
+        tests.push(el.new_tests);
       });
       label = 'Distribuzione Giornaliera Casi';
+      console.log(tests)
+      this.timelineChartData.push( {
+        data: tests, 
+        label: "Distribuzione giornaliera tamponi", 
+        fill: false,
+        pointRadius: 0
+      });
+       
     } else {
       dataArray.forEach(el => {
         this.timelineChartLabels.push(el.date);
@@ -70,14 +80,13 @@ export class OwTimelineComponent implements OnInit, OnChanges {
       label = 'Distribuzione Giornaliera Morti';
     }
 
-    this.timelineChartData = [
-      {
-        data: this.dataset, 
-        label: label, 
-        fill: false,
-        pointRadius: 0
-      }
-    ];          
+    this.timelineChartData.push( {
+      data: this.dataset, 
+      label: label, 
+      fill: false,
+      pointRadius: 0
+    })
+     
   }
 
 }

@@ -16,8 +16,8 @@ export class OverviewComponent implements OnInit {
   ngOnInit(): void {
     this.dataManger.getCovidCountryData("OWID_WRL").subscribe(
       res => {
-        console.log(res.data);
-        this.data = res.data;
+        console.log(res["data"]);
+        this.data = res["data"];
         this.showSpinner = false;
       },
       err => {

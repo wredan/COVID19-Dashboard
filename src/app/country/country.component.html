@@ -37,7 +37,8 @@
     </div>
     <br>
     <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
-        <app-ow-timeline [type]="'cases'" [data]="data" [color]="'#1976D2'" fxFlex="100"></app-ow-timeline>
+        <app-ctry-timeline [type]="'cases'" [data]="data" [color]="'#1976D2'" [heigth]="100" fxFlex="50"></app-ctry-timeline>
+        <app-ctry-timeline [type]="'tests'" [data]="data" [color]="'#388E3C'" [heigth]="100" fxFlex="50"></app-ctry-timeline>
     </div>
     <br>
     <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
@@ -51,6 +52,30 @@
         <app-ow-timeline [type]="'death'" [data]="data" [color]="'#D32F2F'" fxFlex="100"></app-ow-timeline>
     </div>
     <br>
+    <br>   
+    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
+        <h2 fxFlex="100">Analisi Statistica</h2>
+    </div> 
     <mat-divider></mat-divider>
-    <br>    
+    <br>   
+    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
+        <div fxFlex="50">
+            <h3>Regressione lineare e Correlazione</h3>           
+        </div>  
+        <div fxFlex="50">
+            <h3>Coefficiente di Pearson Casi Giornalieri</h3>           
+        </div>      
+    </div> 
+    <br>
+    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
+        <div fxFlex="50">
+            <p> La retta mostra il legame funzionale che descrive una possible relazione tra i dati</p>
+            <app-ctry-timeline [type]="'regressione_lineare_cases'" [data]="data" [heigth]="120" [color]="'#1976D2'"></app-ctry-timeline>
+        </div>
+        <div fxFlex="50">
+            <p> Mostra il grado di approssimazione dei dati</p>
+            <app-ctry-timeline [type]="'pearson_cases'" [data]="data" [heigth]="120" [color]="'#1976D2'"></app-ctry-timeline>
+        </div>        
+    </div>
+    <br>
 </div>

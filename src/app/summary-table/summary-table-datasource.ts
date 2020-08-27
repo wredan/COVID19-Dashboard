@@ -37,11 +37,11 @@ export class SummaryTableDataSource extends DataSource<SummaryTableItem> {
     for (let [key, value] of Object.entries(remoteData)) {
       temp.push({
         id: key, 
-        name: value.location, 
-        total_cases: value.total_cases,
-        daily_new_cases: value.new_cases,
-        total_deaths: value.total_deaths,
-        daily_new_deaths: value.new_deaths});
+        name: value["location"], 
+        total_cases: value["total_cases"],
+        daily_new_cases: value["new_cases"],
+        total_deaths: value["total_deaths"],
+        daily_new_deaths: value["new_deaths"]});
   }
     this.data = temp;  
   }

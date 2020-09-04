@@ -21,7 +21,14 @@ export class PositiveTestChartComponent implements OnInit, OnChanges {
         time: {
           unit: 'month'
         }
-      }]
+      }],
+      yAxes: [{
+        ticks: {
+            callback: function(value, index, values) {
+                return value + "%";
+            }
+        }
+    }]
     }
   };
 
@@ -44,7 +51,7 @@ export class PositiveTestChartComponent implements OnInit, OnChanges {
     let dataset = [];
     data.forEach(el => {
       this.testChartLabels.push(el.date);
-      dataset.push(el.positive_rate);
+      dataset.push(el.positive_rate*100);
     });
 
     this.testChartData.push({

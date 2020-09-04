@@ -37,7 +37,7 @@ export class RegrlinChartComponent implements OnInit, OnChanges {
   // public covarianza = "";
   public pearson = "";
   public stimaGiorno = [];
-  public dimensioneCampionePredizione = 15;
+  public dimensioneCampionePredizione = 7;
   public giorni = [3, 7, 15, 30, 60];
   public timestampsDataset;
 
@@ -112,23 +112,31 @@ export class RegrlinChartComponent implements OnInit, OnChanges {
   }
 
   setPrevision(){
-    let dataTimestamp = (this.dimensioneCampionePredizione > 0) ? this.timestampsDataset.slice(-this.dimensioneCampionePredizione) : this.timestampsDataset;
-    let dataset = (this.dimensioneCampionePredizione > 0) ? this.dataset.slice(-this.dimensioneCampionePredizione) : this.dataset;
+    let dataTimestamp = (this.dimensioneCampionePredizione > 0) ? 
+          this.timestampsDataset.slice(-this.dimensioneCampionePredizione) : this.timestampsDataset;
+    let dataset = (this.dimensioneCampionePredizione > 0) ? 
+          this.dataset.slice(-this.dimensioneCampionePredizione) : this.dataset;
 
     let coefM = this.statsManager.coeffM(dataTimestamp, dataset);
     let coefQ = this.statsManager.coeffQ(dataTimestamp, dataset);
     this.stimaGiorno = [
       { 
         date: new Date(this.data["nextDays"][0] * 1000).toLocaleDateString("it"), 
-        value: Math.round(this.statsManager.regrLinStimaY(this.data["nextDays"][0], coefM, coefQ)).toLocaleString("en")
+        value: Math.round(this.statsManager.regrLinStimaY(
+          this.data["nextDays"][0], coefM, coefQ)
+          ).toLocaleString("en")
       },
       {
         date: new Date(this.data["nextDays"][1] * 1000).toLocaleDateString("it"), 
-        value: Math.round(this.statsManager.regrLinStimaY(this.data["nextDays"][1], coefM, coefQ)).toLocaleString("en")
+        value: Math.round(this.statsManager.regrLinStimaY(
+          this.data["nextDays"][1], coefM, coefQ)
+          ).toLocaleString("en")
       },
       {
         date: new Date(this.data["nextDays"][2] * 1000).toLocaleDateString("it"), 
-        value: Math.round(this.statsManager.regrLinStimaY(this.data["nextDays"][2], coefM, coefQ)).toLocaleString("en")
+        value: Math.round(this.statsManager.regrLinStimaY(
+          this.data["nextDays"][2], coefM, coefQ)
+          ).toLocaleString("en")
       }
     ]   
   }

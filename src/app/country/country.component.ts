@@ -51,7 +51,7 @@ export class CountryComponent implements OnInit {
     this.dataManger.getCovidCountryData(country.code).subscribe(
       res => {
         this.data = res["data"];
-        this.country = (country.name == "World") ? "Situazione Mondiale" : country.name;
+        this.country = country.name;
         this.showSpinner = false;
       },
       err => {

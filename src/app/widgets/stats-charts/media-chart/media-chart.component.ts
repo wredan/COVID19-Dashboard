@@ -48,7 +48,7 @@ export class MediaChartComponent implements OnInit, OnChanges {
     this.mediaChartType = 'bar';
     this.mediaChartData = [{
       data: medie,
-      label: "Media",
+      label: "Average",
       backgroundColor: "#FF9800",
     }];
   }

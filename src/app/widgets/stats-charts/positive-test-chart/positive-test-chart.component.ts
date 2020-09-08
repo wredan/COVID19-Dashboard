@@ -56,7 +56,7 @@ export class PositiveTestChartComponent implements OnInit, OnChanges {
 
     this.testChartData.push({
       data: dataset ? dataset : [],
-      label: "Rateo positivo",
+      label: "Positive Rate",
       fill: false,
       borderColor: "#388E3C",
       pointBackgroundColor: '#388E3C',

@@ -70,7 +70,7 @@ export class CorrelationChartComponent implements OnInit, OnChanges {
     this.correlationChartData.push({
       yAxisID: 'A',
       data: dataset,
-      label: 'Distribuzione Giornaliera Casi',
+      label: 'Daily Cases Distribution',
       fill: false,
       borderColor: "#1976D2",
       pointBackgroundColor: '#1976D2',
@@ -89,7 +89,7 @@ export class CorrelationChartComponent implements OnInit, OnChanges {
     this.correlationChartData.push({
       yAxisID: 'B',
       data: dataset ? dataset : [],
-      label: "Distribuzione giornaliera tamponi",
+      label: "Daily Tests Distribution",
       fill: false,
       borderColor: "#388E3C",
       pointBackgroundColor: '#388E3C',
@@ -108,7 +108,7 @@ export class CorrelationChartComponent implements OnInit, OnChanges {
     this.correlationChartData.push({
       yAxisID: 'B',
       data: dataset,
-      label: 'Distribuzione Giornaliera Morti',
+      label: 'Daily Death Distribution',
       fill: false,
       borderColor: "#D32F2F",
       pointBackgroundColor: '#D32F2F',

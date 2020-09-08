@@ -63,7 +63,7 @@ export class CoeffPearsonChartComponent implements OnInit, OnChanges {
 
     this.pearsonChartData.push({
       data: pearson,
-      label: "Coefficiente di Pearson (casi-test)",
+      label: "Pearson Coefficient (cases-tests)",
       fill: false,
       showLine: true,
       borderDash: [10, 10],
@@ -88,7 +88,7 @@ export class CoeffPearsonChartComponent implements OnInit, OnChanges {
 
     this.pearsonChartData.push({
       data: pearson,
-      label: "Coefficiente di Pearson (casi-morti)",
+      label: "Pearson Coefficient (cases-deaths)",
       fill: false,
       showLine: true,
       borderDash: [10, 10],

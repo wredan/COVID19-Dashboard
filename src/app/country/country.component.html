@@ -10,30 +10,27 @@
     <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
         <form fxFlex="100">
             <mat-form-field appearance="outline" fxFlex="100">
-                <mat-label>Ricerca il Paese da analizzare</mat-label>
+                <mat-label>Country Name</mat-label>
                 <mat-icon matSuffix>search</mat-icon>
                 <input type="text" matInput [matAutocomplete]="auto" [formControl]="autocompleteForm">
                 <mat-autocomplete #auto="matAutocomplete"  [displayWith]="displayFn" (optionSelected)='getCountryData($event.option.value);'>
                     <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
                         {{option.name}}
-
                     </mat-option>
                 </mat-autocomplete>
-                <mat-hint>*Nomi dei Paesi in Inglese</mat-hint>
             </mat-form-field>
         </form>
     </div>
-    <br>
     <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
         <h2 fxFlex="100">{{country}}</h2>
     </div>
     <mat-divider></mat-divider>
     <br>
     <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
-        <app-card [type]="'cases_total'" [header]="'Casi Totali'" [data]="data" [subtitle]="'Casi confermati'"
+        <app-card [type]="'cases_total'" [header]="'Total Cases'" [data]="data" [subtitle]="'Confirmed Cases'"
             fxFlex="50"></app-card>
-        <app-card [type]="'cases_daily'" [header]="'Casi Giornalieri'" [data]="data"
-            [subtitle]="'Casi confermati'" fxFlex="50"></app-card>
+        <app-card [type]="'cases_daily'" [header]="'Daily Cases'" [data]="data"
+            [subtitle]="'Confirmed Cases'" fxFlex="50"></app-card>
     </div>
     <br>
     <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
@@ -42,10 +39,10 @@
     </div>
     <br>
     <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
-        <app-card [type]="'deaths_total'" [header]="'Morti Totali'" [data]="data"
-            [subtitle]="'Morti Confermate'" fxFlex="50"></app-card>
-        <app-card [type]="'deaths_daily'" [header]="'Morti Giornaliere'" [data]="data"
-            [subtitle]="'Morti Confermate'" fxFlex="50"></app-card>
+        <app-card [type]="'deaths_total'" [header]="'Total Deaths'" [data]="data"
+            [subtitle]="'Confirmed Deaths'" fxFlex="50"></app-card>
+        <app-card [type]="'deaths_daily'" [header]="'Daily Deaths'" [data]="data"
+            [subtitle]="'Confirmed Deaths'" fxFlex="50"></app-card>
     </div>
     <br>
     <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
@@ -55,27 +52,27 @@
     <br>   
     <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
         <div fxFlex="100">
-            <h2>Analisi Statistica</h2>
-            <mat-hint>* Alcuni dati potrebbero risultare mancanti a causa del mancato aggiornamento del dataset utilizzato, indipendente da questa visualizzazione</mat-hint>
+            <h2>Statistic analysis</h2>
+            <mat-hint>* Dataset is external to this web project, some data may be incomplete</mat-hint>
         </div>
     </div> 
     <br>
     <mat-divider></mat-divider>
     <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
         <div fxFlex="50">
-            <app-correlation-chart [type]="'correlation_cases_tests'" [title]="'Casi-Test'" [data]="data" [heigth]="120"></app-correlation-chart>
+            <app-correlation-chart [type]="'correlation_cases_tests'" [title]="'Cases-Tests'" [data]="data" [heigth]="120"></app-correlation-chart>
         </div>
         <div fxFlex="50">          
-            <app-coeff-pearson-chart [type]="'pearson_cases_tests'" [title]="'Casi-Test'" [data]="data" [heigth]="120"></app-coeff-pearson-chart> 
+            <app-coeff-pearson-chart [type]="'pearson_cases_tests'" [title]="'Cases-Tests'" [data]="data" [heigth]="120"></app-coeff-pearson-chart> 
         </div>        
     </div>
     <br>
     <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
         <div fxFlex="50">
-            <app-correlation-chart [type]="'correlation_cases_deaths'" [title]="'Casi-Morti'" [data]="data" [heigth]="120"></app-correlation-chart>
+            <app-correlation-chart [type]="'correlation_cases_deaths'" [title]="'Cases-Deaths'" [data]="data" [heigth]="120"></app-correlation-chart>
         </div>
         <div fxFlex="50">          
-            <app-coeff-pearson-chart [type]="'pearson_cases_deaths'" [title]="'Casi-Morti'" [data]="data" [heigth]="120"></app-coeff-pearson-chart>  
+            <app-coeff-pearson-chart [type]="'pearson_cases_deaths'" [title]="'Cases-Deaths'" [data]="data" [heigth]="120"></app-coeff-pearson-chart>  
         </div>        
     </div>
     <br>

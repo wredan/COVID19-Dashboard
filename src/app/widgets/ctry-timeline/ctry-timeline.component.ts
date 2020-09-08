@@ -66,7 +66,7 @@ export class CtryTimelineComponent implements OnInit, OnChanges {
 
     this.timelineChartData.push({
       data: dataset,
-      label: 'Distribuzione Giornaliera Morti',
+      label: 'Daily Death Distribution',
       fill: false,
       borderColor: "#D32F2F",
       pointBackgroundColor: '#D32F2F',
@@ -84,7 +84,7 @@ export class CtryTimelineComponent implements OnInit, OnChanges {
 
     this.timelineChartData.push({
       data: dataset,
-      label: 'Distribuzione Giornaliera Casi',
+      label: 'Daily Cases Distribution',
       fill: false,
       borderColor: "#1976D2",
       pointBackgroundColor: '#1976D2',
@@ -102,7 +102,7 @@ export class CtryTimelineComponent implements OnInit, OnChanges {
 
     this.timelineChartData.push({
       data: dataset ? dataset : [],
-      label: "Distribuzione giornaliera tamponi",
+      label: "Daily Tests Distribution",
       fill: false,
       borderColor: "#388E3C",
       pointBackgroundColor: '#388E3C',

@@ -1,13 +1,13 @@
 
 <div>
-    <h3>Media casi su 
+    <h3>Average cases over
         <mat-form-field appearance="standard" style="width: 50px;">
         <mat-select [(ngModel)]="days" (ngModelChange)="getMedia()">
           <mat-option *ngFor="let giorno of giorni" [value]="giorno">
             {{giorno}}
           </mat-option>
         </mat-select>
-      </mat-form-field> giorni</h3>         
+      </mat-form-field> days</h3>         
     <div>
       <canvas baseChart
               [height]="heigth"

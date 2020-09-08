@@ -62,14 +62,14 @@ export class OwTimelineComponent implements OnInit, OnChanges {
         this.timelineChartLabels.push(el.date);
         this.dataset.push(el.new_cases);
       });
-      label = 'Distribuzione Giornaliera Casi';
+      label = 'Daily Cases Distribution';
             
     } else {
       dataArray.forEach(el => {
         this.timelineChartLabels.push(el.date);
         this.dataset.push(el.new_deaths);
       });
-      label = 'Distribuzione Giornaliera Morti';
+      label = 'Daily Deaths Distribution';
     }
 
     this.timelineChartData.push( {

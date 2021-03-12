@@ -1,0 +1,47 @@
+<div *ngIf="showSpinner == true">
+    <div fxLayout="column" fxLayoutAlign="center center" class="loading-page-spinner">
+        <mat-progress-spinner diameter="70" mode="indeterminate"></mat-progress-spinner>
+    </div>
+</div>
+<div *ngIf="showSpinner == false" class="custom-container">
+    <div class="row stats-cards text-center">
+        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+            <app-card [type]="'cases_total'" [header]="'Total Global Cases'" [data]="data" [subtitle]="'Confirmed Cases'"></app-card>
+        </div>
+        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+            <app-card [type]="'cases_daily'" [header]="'Daily Global Cases'" [data]="data"
+            [subtitle]="'Confirmed Cases'"></app-card>
+        </div>              
+    </div>
+    <br>
+    <div class="row stats-cards">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <app-ow-timeline [type]="'cases'" [data]="data" [color]="'#1976D2'"></app-ow-timeline>
+        </div>       
+    </div>
+    <br>
+    <div class="row stats-cards text-center">
+        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+            <app-card [type]="'deaths_total'" [header]="'Total Global Deaths'" [data]="data"
+            [subtitle]="'Confirmed Deaths'"></app-card>
+        </div>
+        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+            <app-card [type]="'deaths_daily'" [header]="'Daily Global Deaths'" [data]="data"
+            [subtitle]="'Confirmed Deaths'"></app-card>
+        </div>
+    </div>
+    <br>
+    <div class="row stats-cards">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <app-ow-timeline [type]="'death'" [data]="data" [color]="'#D32F2F'"></app-ow-timeline>
+        </div>
+    </div>
+    <br>
+    <mat-divider></mat-divider>
+    <br>
+    <div class="row stats-cards">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <app-summary-table></app-summary-table>
+        </div>
+    </div>
+</div>

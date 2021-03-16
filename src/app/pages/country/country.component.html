@@ -54,7 +54,29 @@
         </div>              
     </div>    
     <br>
+    
+    <div class="row text-center">
+        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+            <app-card [type]="'vaccinations_total'" [header]="'Total Vaccinations'" [data]="data"
+            [subtitle]="'Confirmed Vaccinations'"></app-card>
+        </div>
+        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+            <app-card [type]="'vaccinations_fully'" [header]="'Fully Vaccinated'" [data]="data"
+            [subtitle]="'Confirmed Vaccinations'"></app-card>
+        </div>   
+        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+            <app-card [type]="'vaccinations_daily'" [header]="'Daily Vaccinations'" [data]="data"
+            [subtitle]="'Confirmed Vaccinations'"></app-card>
+        </div>                     
+    </div>
+    <br>
 
+    <div class="row stats-cards">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <app-ctry-timeline [type]="'vaccination'" [data]="data" [color]="'#a419d2'" [heigth]="400"></app-ctry-timeline>
+        </div>
+    </div>
+    <br>  
     <div class="row text-center">
         <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
             <app-card [type]="'deaths_total'" [header]="'Total Deaths'" [data]="data"
@@ -72,8 +94,9 @@
             <app-ow-timeline [type]="'death'" [data]="data" [color]="'#D32F2F'"></app-ow-timeline>
         </div>
     </div>
-    <br>  
     <br> 
+    <br> 
+
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <h3>Statistic Analysis</h3>

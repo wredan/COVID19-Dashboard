@@ -40,7 +40,16 @@ export class CardComponent implements OnInit, OnChanges {
         this.title = lastDay.new_deaths.toLocaleString("en");
         this.header += " - " + new Date(lastDay.timestamp * 1000).toLocaleDateString("it");
         break;
-
+      case "vaccinations_total":
+        this.title = lastDay.total_vaccinations.toLocaleString("en");
+        break;
+      case "vaccinations_fully":
+        this.title = lastDay.people_fully_vaccinated.toLocaleString("en");
+        break;
+      case "vaccinations_daily":
+        this.title = lastDay.new_vaccinations.toLocaleString("en");
+        this.header += " - " + new Date(lastDay.timestamp * 1000).toLocaleDateString("it");
+        break;
       default:
         break;
     }    

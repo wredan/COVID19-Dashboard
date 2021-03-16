@@ -74,10 +74,31 @@ export class CtryTimelineComponent implements OnInit, OnChanges {
         break;     
       case "death":
         this.setDeath(this.data.data);
+        break;  
+      case "vaccination":
+        this.setVaccination(this.data.data);
         break;    
       default:
         break;
     }
+  }
+
+  setVaccination(data) {
+    let dataset = [];
+    data.forEach(el => {
+      dataset.push(el.new_vaccinations);
+    });
+
+    this.timelineChartData.push({
+      data: dataset,
+      label: 'Daily Vaccinations Distribution',
+      fill: false,
+      borderColor: this.color,
+      pointBackgroundColor: this.color,
+      pointBorderColor: this.color,
+      pointRadius: 5,
+      order: 5
+    })
   }
 
   setDeath(data) {
@@ -90,9 +111,9 @@ export class CtryTimelineComponent implements OnInit, OnChanges {
       data: dataset,
       label: 'Daily Death Distribution',
       fill: false,
-      borderColor: "#D32F2F",
-      pointBackgroundColor: '#D32F2F',
-      pointBorderColor: '#D32F2F',
+      borderColor: this.color,
+      pointBackgroundColor: this.color,
+      pointBorderColor: this.color,
       pointRadius: 5,
       order: 5
     })
@@ -108,9 +129,9 @@ export class CtryTimelineComponent implements OnInit, OnChanges {
       data: dataset,
       label: 'Daily Cases Distribution',
       fill: false,
-      borderColor: "#1976D2",
-      pointBackgroundColor: '#1976D2',
-      pointBorderColor: '#1976D2',
+      borderColor: this.color,
+      pointBackgroundColor: this.color,
+      pointBorderColor: this.color,
       pointRadius: 4,
       order: 1
     });
@@ -126,9 +147,9 @@ export class CtryTimelineComponent implements OnInit, OnChanges {
       data: dataset ? dataset : [],
       label: "Daily Tests Distribution",
       fill: false,
-      borderColor: "#388E3C",
-      pointBackgroundColor: '#388E3C',
-      pointBorderColor: '#388E3C',
+      borderColor: this.color,
+      pointBackgroundColor: this.color,
+      pointBorderColor: this.color,
       pointRadius: 4,
       order: 1
     });

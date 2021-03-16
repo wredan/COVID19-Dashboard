@@ -6,8 +6,8 @@
 .header {
     background: var(--background-primary);
     color:floralwhite;
-    min-height: 100px;
-    max-height: 100px;
+    height: 100px;
+    height: 100px;
 }
 
 .active {
@@ -16,7 +16,7 @@
 
 .header-page-selector {
     background: var(--background-dark-primary);
-    padding: 5px 0;
+    padding: 5px;
 }
 
 .header-page-selector a {

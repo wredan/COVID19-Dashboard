@@ -7,7 +7,9 @@ import { CountryComponent } from './pages/country/country.component';
 const routes: Routes = [
   { path: 'overview', component: OverviewComponent },
   { path: 'country', component: CountryComponent },
-  { path: '', redirectTo: '/overview', pathMatch: 'full' }
+  { path: '', redirectTo: 'overview', pathMatch: 'full' },
+  { path: '**', redirectTo: 'overview'}
+
 ];
 
 @NgModule({

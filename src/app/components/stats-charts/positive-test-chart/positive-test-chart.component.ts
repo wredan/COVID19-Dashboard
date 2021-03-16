@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { StatsService } from '../../../services/stats/stats.service';
 
 @Component({
   selector: 'app-positive-test-chart',
@@ -15,11 +14,16 @@ export class PositiveTestChartComponent implements OnInit, OnChanges {
   public testChartOptions = {
     scaleShowVerticalLines: false,
     responsive: true,
+    maintainAspectRatio: false,
     scales: {
       xAxes: [{
         type: 'time',
         time: {
-          unit: 'month'
+          unit: 'day'
+        },
+        dysplay: true,
+        ticks: {
+          min: new Date().setMonth(new Date().getMonth() - 2),
         }
       }],
       yAxes: [{
@@ -29,6 +33,18 @@ export class PositiveTestChartComponent implements OnInit, OnChanges {
             }
         }
     }]
+    },
+    plugins: {
+      zoom: {
+        pan: {
+          enabled: true,
+          mode: 'xy'
+        },
+        zoom: {
+          enabled: true,
+          mode: 'xy'
+        }
+      }
     }
   };
 
@@ -37,7 +53,7 @@ export class PositiveTestChartComponent implements OnInit, OnChanges {
   public testChartLegend = true;
   public testChartData = [];
 
-  constructor(private statsManager: StatsService) { }
+  constructor() { }
 
   ngOnInit() {
   }
@@ -50,7 +66,7 @@ export class PositiveTestChartComponent implements OnInit, OnChanges {
     let data = this.data.data;
     let dataset = [];
     data.forEach(el => {
-      this.testChartLabels.push(el.date);
+      this.testChartLabels.push(new Date(el.date));
       dataset.push(el.positive_rate*100);
     });
 
@@ -61,7 +77,7 @@ export class PositiveTestChartComponent implements OnInit, OnChanges {
       borderColor: "#388E3C",
       pointBackgroundColor: '#388E3C',
       pointBorderColor: '#388E3C',
-      pointRadius: 1,
+      pointRadius: 4,
       order: 1
     });
   }

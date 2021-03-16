@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { StatsService } from '../../services/stats/stats.service';
 
 @Component({
   selector: 'app-ctry-timeline',
@@ -18,13 +17,36 @@ export class CtryTimelineComponent implements OnInit, OnChanges {
   public timelineChartOptions = {
     scaleShowVerticalLines: false,
     responsive: true,
+    maintainAspectRatio: false,
     scales: {
       xAxes: [{
         type: 'time',
         time: {
-          unit: 'month'
+          unit: 'day'
+        },
+        ticks: {
+          min: new Date().setMonth(new Date().getMonth() - 2),
         }
       }]
+    },
+    tooltips: {
+      callbacks: {
+        label: (tooltipItem, data) => {
+          return Number(tooltipItem.value).toLocaleString('en-US');
+        },
+      }
+    },
+    plugins: {
+      zoom: {
+        pan: {
+          enabled: true,
+          mode: 'xy'
+        },
+        zoom: {
+          enabled: true,
+          mode: 'xy'
+        }
+      }
     }
   };
 
@@ -33,7 +55,7 @@ export class CtryTimelineComponent implements OnInit, OnChanges {
   public timelineChartLegend = true;
   public timelineChartData = [];
 
-  constructor(private statsManager: StatsService) { }
+  constructor() { }
 
   ngOnInit() {
 
@@ -41,7 +63,7 @@ export class CtryTimelineComponent implements OnInit, OnChanges {
 
   ngOnChanges(): void {
     this.data.data.forEach(el => {
-      this.timelineChartLabels.push(el.date);
+      this.timelineChartLabels.push(new Date(el.date));
     });
     switch (this.type) {
       case "cases":
@@ -71,8 +93,8 @@ export class CtryTimelineComponent implements OnInit, OnChanges {
       borderColor: "#D32F2F",
       pointBackgroundColor: '#D32F2F',
       pointBorderColor: '#D32F2F',
-      pointRadius: 1,
-      order: 1
+      pointRadius: 5,
+      order: 5
     })
   }
 
@@ -89,7 +111,7 @@ export class CtryTimelineComponent implements OnInit, OnChanges {
       borderColor: "#1976D2",
       pointBackgroundColor: '#1976D2',
       pointBorderColor: '#1976D2',
-      pointRadius: 1,
+      pointRadius: 4,
       order: 1
     });
   }
@@ -107,12 +129,8 @@ export class CtryTimelineComponent implements OnInit, OnChanges {
       borderColor: "#388E3C",
       pointBackgroundColor: '#388E3C',
       pointBorderColor: '#388E3C',
-      pointRadius: 1,
+      pointRadius: 4,
       order: 1
     });
   }
-
-
- 
-
 }

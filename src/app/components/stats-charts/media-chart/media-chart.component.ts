@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { StatsService } from '../../../services/stats/stats.service';
 
 @Component({
   selector: 'app-media-chart',
@@ -16,7 +15,39 @@ export class MediaChartComponent implements OnInit, OnChanges {
   public dataset = [];
   public mediaChartOptions = {
     scaleShowVerticalLines: false,
-    responsive: true
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      xAxes: [{
+        type: 'time',
+        time: {
+          unit: 'day'
+        },
+        dysplay: true,
+        ticks: {
+          min: new Date().setMonth(new Date().getMonth() - 2),
+        }
+      }],  
+    },
+    tooltips: {
+      callbacks: {
+        label: (tooltipItem, data) => {
+          return Number(Number(tooltipItem.value).toFixed(2)).toLocaleString("en-US");
+        },
+      }
+    },
+    plugins: {
+      zoom: {
+        pan: {
+          enabled: true,
+          mode: 'xy'
+        },
+        zoom: {
+          enabled: true,
+          mode: 'xy'
+        }
+      }
+    }
   };
 
   public mediaChartLabels = [];
@@ -24,7 +55,7 @@ export class MediaChartComponent implements OnInit, OnChanges {
   public mediaChartLegend = true;
   public mediaChartData = [];
 
-  constructor(private statsManager: StatsService) { }
+  constructor() { }
 
   ngOnInit() {
   }
@@ -43,11 +74,11 @@ export class MediaChartComponent implements OnInit, OnChanges {
        sum += data[i-j].new_cases;
       }
      medie.push(sum/this.days);
-     this.mediaChartLabels.push(data[i].date);
+     this.mediaChartLabels.push(new Date(data[i].date));
     }
     this.mediaChartType = 'bar';
     this.mediaChartData = [{
-      data: medie,
+      data: medie? medie : [],
       label: "Average",
       backgroundColor: "#FF9800",
     }];

@@ -1,5 +1,5 @@
 .custom-container {
-  width: 80%;
+  width: 90%;
   margin: 20px auto;
 }
 
@@ -12,4 +12,13 @@
 .loading-page-spinner {
     width: 100vw;
     height: 100vh;
+}
+
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 3) { 
+    .custom-container {
+      width: 100%;
+    }
 }

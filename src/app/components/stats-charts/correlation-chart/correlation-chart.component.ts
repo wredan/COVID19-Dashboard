@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { StatsService } from '../../../services/stats/stats.service';
 
 @Component({
   selector: 'app-correlation-chart',
@@ -19,11 +18,16 @@ export class CorrelationChartComponent implements OnInit, OnChanges {
   public correlationChartOptions = {
     scaleShowVerticalLines: false,
     responsive: true,
+    maintainAspectRatio: false,
     scales: {
       xAxes: [{
         type: 'time',
         time: {
-          unit: 'month'
+          unit: 'day'
+        },
+        dysplay: true,
+        ticks: {
+          min: new Date().setMonth(new Date().getMonth() - 2),
         }
       }],
       yAxes: [{
@@ -35,6 +39,25 @@ export class CorrelationChartComponent implements OnInit, OnChanges {
         type: 'linear',
         position: 'right'       
       }]
+    },
+    tooltips: {
+      callbacks: {
+        label: (tooltipItem, data) => {
+          return Number(tooltipItem.value).toLocaleString('en-US');
+        },
+      }
+    },
+    plugins: {
+      zoom: {
+        pan: {
+          enabled: true,
+          mode: 'xy'
+        },
+        zoom: {
+          enabled: true,
+          mode: 'xy'
+        }
+      }
     }
   };
 
@@ -43,7 +66,7 @@ export class CorrelationChartComponent implements OnInit, OnChanges {
   public correlationChartLegend = true;
   public correlationChartData = [];
 
-  constructor(private statsManager: StatsService) { }
+  constructor() { }
 
   ngOnInit() {
 
@@ -51,7 +74,7 @@ export class CorrelationChartComponent implements OnInit, OnChanges {
 
   ngOnChanges(): void {
     this.data.data.forEach(el => {
-      this.correlationChartLabels.push(el.date);
+      this.correlationChartLabels.push(new Date(el.date));
     });
     this.setCases(this.data.data);
     if(this.type == "correlation_cases_tests"){
@@ -75,7 +98,7 @@ export class CorrelationChartComponent implements OnInit, OnChanges {
       borderColor: "#1976D2",
       pointBackgroundColor: '#1976D2',
       pointBorderColor: '#1976D2',
-      pointRadius: 1,
+      pointRadius: 4,
       order: 1
     });
   }
@@ -94,7 +117,7 @@ export class CorrelationChartComponent implements OnInit, OnChanges {
       borderColor: "#388E3C",
       pointBackgroundColor: '#388E3C',
       pointBorderColor: '#388E3C',
-      pointRadius: 1,
+      pointRadius: 4,
       order: 1
     });
   }
@@ -113,7 +136,7 @@ export class CorrelationChartComponent implements OnInit, OnChanges {
       borderColor: "#D32F2F",
       pointBackgroundColor: '#D32F2F',
       pointBorderColor: '#D32F2F',
-      pointRadius: 1,
+      pointRadius: 4,
       order: 1
     })
   }

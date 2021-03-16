@@ -17,26 +17,38 @@ export class OwTimelineComponent implements OnInit, OnChanges {
   public timelineChartOptions = {
     scaleShowVerticalLines: false,
     responsive: true, 
+    maintainAspectRatio: false,
     scales: {
       xAxes: [{
           type: 'time',
           time: {
-              unit: 'month'
+              unit: 'day'
+          },
+          dysplay: true,
+          ticks: {
+            min: new Date().setMonth(new Date().getMonth() - 2),
           }
       }]
-  }   
-    // plugins: {
-    //   zoom: {
-    //     pan: {
-    //       enabled: true,
-    //       mode: 'xy'
-    //     },
-    //     zoom: {
-    //       enabled: true,
-    //       mode: 'xy'
-    //     }
-    //   }
-    // }
+  },
+  tooltips: {
+    callbacks: {
+      label: (tooltipItem, data) => {
+        return Number(tooltipItem.value).toLocaleString('en-US');
+      },
+    }
+  },
+    plugins: {
+      zoom: {
+        pan: {
+          enabled: true,
+          mode: 'xy'
+        },
+        zoom: {
+          enabled: true,
+          mode: 'xy'
+        }
+      }
+    }
   };
 
   public timelineChartLabels = [];
@@ -57,13 +69,11 @@ export class OwTimelineComponent implements OnInit, OnChanges {
     let dataArray = this.data.data;   
     let label;
     if(this.type == "cases"){
-      let tests = [];
-      dataArray.forEach(el => {
-        this.timelineChartLabels.push(el.date);
+      dataArray.forEach(el => {      
+        this.timelineChartLabels.push(new Date(el.date));
         this.dataset.push(el.new_cases);
       });
       label = 'Daily Cases Distribution';
-            
     } else {
       dataArray.forEach(el => {
         this.timelineChartLabels.push(el.date);

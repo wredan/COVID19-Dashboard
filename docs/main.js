@@ -410,6 +410,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_stats_charts_media_chart_media_chart_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./components/stats-charts/media-chart/media-chart.component */ "./src/app/components/stats-charts/media-chart/media-chart.component.ts");
 /* harmony import */ var _components_stats_charts_positive_test_chart_positive_test_chart_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./components/stats-charts/positive-test-chart/positive-test-chart.component */ "./src/app/components/stats-charts/positive-test-chart/positive-test-chart.component.ts");
 /* harmony import */ var _components_regrlin_card_regrlin_card_component__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./components/regrlin-card/regrlin-card.component */ "./src/app/components/regrlin-card/regrlin-card.component.ts");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
 //#region Module
 
 
@@ -451,11 +452,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 //#endregion
 class AppModule {
 }
 AppModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineNgModule"]({ type: AppModule, bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_23__["AppComponent"]] });
-AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector"]({ factory: function AppModule_Factory(t) { return new (t || AppModule)(); }, providers: [], imports: [[
+AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector"]({ factory: function AppModule_Factory(t) { return new (t || AppModule)(); }, providers: [
+        { provide: _angular_common__WEBPACK_IMPORTED_MODULE_37__["LocationStrategy"], useClass: _angular_common__WEBPACK_IMPORTED_MODULE_37__["HashLocationStrategy"] },
+    ], imports: [[
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
             _app_routing__WEBPACK_IMPORTED_MODULE_10__["AppRoutingModule"],
             _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_3__["BrowserAnimationsModule"],
@@ -559,7 +563,9 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector
                     _angular_material_icon__WEBPACK_IMPORTED_MODULE_19__["MatIconModule"],
                     _angular_material_select__WEBPACK_IMPORTED_MODULE_20__["MatSelectModule"]
                 ],
-                providers: [],
+                providers: [
+                    { provide: _angular_common__WEBPACK_IMPORTED_MODULE_37__["LocationStrategy"], useClass: _angular_common__WEBPACK_IMPORTED_MODULE_37__["HashLocationStrategy"] },
+                ],
                 bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_23__["AppComponent"]]
             }]
     }], null, null); })();
@@ -2919,7 +2925,7 @@ _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__["platformBrowser"]().boot
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! H:\COVID19-Dashboard\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /home/danilosantitto/Repo/COVID19-Dashboard/src/main.ts */"./src/main.ts");
 
 
 /***/ })

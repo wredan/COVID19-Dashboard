@@ -440,7 +440,7 @@ module.exports = content.locals || {};
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! H:\COVID19-Dashboard\src\styles.scss */"./src/styles.scss");
+module.exports = __webpack_require__(/*! /home/danilosantitto/Repo/COVID19-Dashboard/src/styles.scss */"./src/styles.scss");
 
 
 /***/ })

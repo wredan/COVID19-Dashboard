@@ -40,6 +40,7 @@ import { CorrelationChartComponent } from './components/stats-charts/correlation
 import { MediaChartComponent } from './components/stats-charts/media-chart/media-chart.component';
 import { PositiveTestChartComponent } from './components/stats-charts/positive-test-chart/positive-test-chart.component';
 import { RegrlinCardComponent } from './components/regrlin-card/regrlin-card.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 //#endregion
 
 @NgModule({
@@ -84,7 +85,9 @@ import { RegrlinCardComponent } from './components/regrlin-card/regrlin-card.com
     MatIconModule,
     MatSelectModule
   ],
-  providers: [],
+  providers: [
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

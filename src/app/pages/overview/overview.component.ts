@@ -24,7 +24,7 @@ export class OverviewComponent implements OnInit {
         this.showSpinner = false;
       },
       err => {
-        this.snackBar.open("Si è verificato un errore di connessione con il server!" , "Ok", { panelClass: 'error-dialog' });
+        this.snackBar.open("A server connection error has occurred!" , "Ok", { panelClass: 'error-dialog' });
       }
     );
   }

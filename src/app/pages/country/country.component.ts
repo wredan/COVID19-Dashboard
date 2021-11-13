@@ -61,7 +61,7 @@ export class CountryComponent implements OnInit {
       },
       err => {
         if(!this.networkError) {
-          this.snackBar.open("Si è verificato un errore di connessione con il server!" , "Ok", { panelClass: 'error-dialog' });
+          this.snackBar.open("A server connection error has occurred!" , "Ok", { panelClass: 'error-dialog' });
           this.networkError = true;
         }
       }
@@ -75,7 +75,7 @@ export class CountryComponent implements OnInit {
       },
       err => {
         if(!this.networkError) {
-          this.snackBar.open("Si è verificato un errore di connessione con il server!" , "Ok", { panelClass: 'error-dialog' });
+          this.snackBar.open("A server connection error has occurred!" , "Ok", { panelClass: 'error-dialog' });
           this.networkError = true;
         }
       }

@@ -3,6 +3,7 @@ import { DataManagerService } from '../../services/data-manager/data-manager.ser
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 interface AutocompleteValue {
   name: string;
@@ -23,14 +24,18 @@ export class CountryComponent implements OnInit {
 
   public data;
   public showSpinner: boolean = true;
+  private networkError: boolean = false;
 
-  constructor(private dataManger: DataManagerService) { }
+  constructor(
+    private dataManger: DataManagerService,
+    private snackBar: MatSnackBar
+    ) { }
 
   ngOnInit(): void {
     let country: AutocompleteValue = { name: "World", code: "OWID_WRL" };
     this.getCountryData(country);
     this._getCountryCodesList();
-
+    this.networkError = false;
     this.filteredOptions = this.autocompleteForm.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value))
@@ -55,7 +60,10 @@ export class CountryComponent implements OnInit {
         this.showSpinner = false;
       },
       err => {
-        console.log(err);
+        if(!this.networkError) {
+          this.snackBar.open("Si è verificato un errore di connessione con il server!" , "Ok", { panelClass: 'error-dialog' });
+          this.networkError = true;
+        }
       }
     );
   }
@@ -66,7 +74,10 @@ export class CountryComponent implements OnInit {
         this.options = res["data"];
       },
       err => {
-        console.log(err);
+        if(!this.networkError) {
+          this.snackBar.open("Si è verificato un errore di connessione con il server!" , "Ok", { panelClass: 'error-dialog' });
+          this.networkError = true;
+        }
       }
     );
   }

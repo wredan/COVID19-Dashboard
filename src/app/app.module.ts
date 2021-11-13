@@ -41,6 +41,8 @@ import { MediaChartComponent } from './components/stats-charts/media-chart/media
 import { PositiveTestChartComponent } from './components/stats-charts/positive-test-chart/positive-test-chart.component';
 import { RegrlinCardComponent } from './components/regrlin-card/regrlin-card.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 //#endregion
 
 @NgModule({
@@ -83,7 +85,8 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     FormsModule,
     ReactiveFormsModule,
     MatIconModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSnackBarModule
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},

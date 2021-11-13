@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataManagerService } from '../../services/data-manager/data-manager.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-overview',
@@ -11,7 +12,10 @@ export class OverviewComponent implements OnInit {
   public data;
   showSpinner = true;
 
-  constructor(private dataManger: DataManagerService) { }
+  constructor(
+    private dataManger: DataManagerService,
+    private snackBar: MatSnackBar
+    ) { }
 
   ngOnInit(): void {
     this.dataManger.getCovidCountryData("OWID_WRL").subscribe(
@@ -20,7 +24,7 @@ export class OverviewComponent implements OnInit {
         this.showSpinner = false;
       },
       err => {
-        console.log(err);
+        this.snackBar.open("Si è verificato un errore di connessione con il server!" , "Ok", { panelClass: 'error-dialog' });
       }
     );
   }
